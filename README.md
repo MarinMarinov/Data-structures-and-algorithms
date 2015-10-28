@@ -1,0 +1,1 @@
+## Telerik Academy Data Structures and Algorithms course
