@@ -69,4 +69,10 @@ Lets consider the odd members number and the even members number are approximate
 
 Constraints: This algorithm works when n = m(else throws `Index out of range exception`) and when `row <= m - 1`.
 
-The `for-loop` will iterates `n` times. If the condition `row + 1 < matrix.GetLength(1)` is `true` the same method will be recursively called again. The **worst case** is when `row` variable equals to `m - 1`. Then total iterations will be `n * n`. The algorithm running time will be **O(g(n)) = O(n<sup>2</sup>)**. Complexity will be **Quadratic**.
+The `for-loop` will iterates `n` times. If the condition `row + 1 < matrix.GetLength(1)` is `true` the same method will be recursively called again.
+
+The **worst case** is when `row < m - 1`. Then total 
+iterations will be `n * n`. The algorithm running time will be **O(g(n)) = O(n<sup>2</sup>)**. Complexity will be **Quadratic**.
+
+The **best case** is when `row = m - 1`. Then total 
+iterations will be `n`. The algorithm running time will be **O(g(n)) = O(n)**. Complexity will be **Linear**.
