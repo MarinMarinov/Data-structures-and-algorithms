@@ -1,0 +1,7 @@
+
+				 8 integers |  10 000 integers | 	100 000 integers
+SelectionSort		7ms			1 seconds				2 minutes
+BubbleSort			1ms			3 seconds				5 minutes(long waiting)
+InsertionSort		<1ms		763 ms					1 minutes
+QuickSort			3ms			18 ms					194ms
+MergeSort			2ms			22 ms					211ms

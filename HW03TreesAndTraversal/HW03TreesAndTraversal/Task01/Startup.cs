@@ -7,31 +7,9 @@ namespace Task01
 {
     public class Startup
     {
-        public static Node<int> FindRootElement(List<Node<int>> nodes)
-        {
-            var hasParentFlags = new bool[nodes.Count];
-
-            foreach (var node in nodes)
-            {
-                foreach (var child in node.Children)
-                {
-                    hasParentFlags[child.Value] = true; //child.Value is the number value not the index
-                }
-            }
-
-            for (var i = 0; i < hasParentFlags.Length; i++)
-            {
-                if (hasParentFlags[i] == false)
-                {
-                    return nodes[i];
-                }
-            }
-
-            throw new ArgumentException("The tree has no root element", "nodes");
-        }
-
         public static void Main()
         {
+            // constructing the tree
             int n;
             int.TryParse(Console.ReadLine(), out n);
 
@@ -42,7 +20,6 @@ namespace Task01
                 nodes.Add(new Node<int>(i));
             }
 
-            // constructing the tree
             for (int i = 1; i <= n - 1; i++)
             {
                 string input = Console.ReadLine();
@@ -74,12 +51,74 @@ namespace Task01
             Console.WriteLine(string.Join(", ", middleNodes.Select(node => node.Value)));
 
             // 4. The logest path in the tree from the root
-            //Console.WriteLine(TraverseDFS(root));
             var longestPath = TraverseDFS(root);
             Console.WriteLine("The longest path is: {0}", longestPath);
 
             //5. Display the longest path
             Console.WriteLine(DisplayLongestPath(root, ""));
+        }
+
+        private static Node<int> FindRootElement(List<Node<int>> nodes)
+        {
+            var hasParentFlags = new bool[nodes.Count];
+
+            foreach (var node in nodes)
+            {
+                foreach (var child in node.Children)
+                {
+                    hasParentFlags[child.Value] = true; //child.Value is the number value not the index
+                }
+            }
+
+            for (var i = 0; i < hasParentFlags.Length; i++)
+            {
+                if (hasParentFlags[i] == false)
+                {
+                    return nodes[i];
+                }
+            }
+
+            throw new ArgumentException("The tree has no root element", "nodes");
+        }
+
+        private static List<Node<int>> FindAllLeafs(List<Node<int>> nodes)
+        {
+            var result = new List<Node<int>>();
+
+            foreach (var node in nodes)
+            {
+                if (node.Children.Count == 0)
+                {
+                    result.Add(node);
+                }
+            }
+
+            return result;
+        }
+
+        private static List<Node<int>> FindAllMiddleNodes(List<Node<int>> nodes)
+        {
+            var root = FindRootElement(nodes);
+
+            var leafs = FindAllLeafs(nodes);
+
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                if (nodes[i] == root)
+                {
+                    nodes.Remove(nodes[i]);
+                }
+
+                foreach (var leaf in leafs)
+                {
+                    if (nodes[i] == leaf)
+                    {
+                        nodes.Remove(nodes[i]);
+                    }
+                }
+            }
+
+            return nodes;
         }
 
         private static int TraverseDFS(Node<int> currentNode)
@@ -126,6 +165,7 @@ namespace Task01
                 stringBuilder.Append(pointer);
                 TraverseDFS(child);
             }*/
+
             foreach(var child in currentNode.Children)
             {
                 var currentSb = new StringBuilder(stringBuilder.ToString());
@@ -138,46 +178,6 @@ namespace Task01
             var path = stringBuilder.ToString();
 
             return path;
-        }
-
-        private static List<Node<int>> FindAllMiddleNodes(List<Node<int>> nodes)
-        {
-            var root = FindRootElement(nodes);
-
-            var leafs = FindAllLeafs(nodes);
-
-            for (int i = 0; i < nodes.Count; i++)
-            {
-                if (nodes[i] == root)
-                {
-                    nodes.Remove(nodes[i]);
-                }
-
-                foreach (var leaf in leafs)
-                {
-                    if (nodes[i] == leaf)
-                    {
-                        nodes.Remove(nodes[i]);
-                    }
-                }
-            }
-
-            return nodes;
-        }
-
-        private static List<Node<int>> FindAllLeafs(List<Node<int>> nodes)
-        {
-            var result = new List<Node<int>>();
-
-            foreach (var node in nodes)
-            {
-                if (node.Children.Count == 0)
-                {
-                    result.Add(node);
-                }
-            }
-
-            return result;
         }
     }
 }

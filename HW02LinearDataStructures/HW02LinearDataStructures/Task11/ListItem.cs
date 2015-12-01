@@ -11,6 +11,7 @@ namespace Task11
         {
             this.Value = value;
         }
+
         public T Value
         {
             get { return this.value;  }

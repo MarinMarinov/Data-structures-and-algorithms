@@ -1,8 +1,8 @@
-﻿using System;
-using System.IO;
-
-namespace Task04
+﻿namespace Task04
 {
+    using System;
+    using System.IO;
+
     public class Startup
     {
         private const string RootFolderPath = "C:\\Windows\\Web";

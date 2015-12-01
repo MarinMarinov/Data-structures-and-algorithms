@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Task04
+﻿namespace Task04
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class MyHashTable<K, T> : IEnumerable<KeyValuePair<K, T>>
     {
         private const int InitialCapacity = 16;

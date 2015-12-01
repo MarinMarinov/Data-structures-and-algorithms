@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-
-namespace Task02
+﻿namespace Task02
 {
+    using System;
+    using System.Linq;
+
     public class Startup
     {
         public static void Main()

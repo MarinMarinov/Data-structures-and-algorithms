@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Task04;
-
-namespace Task05
+﻿namespace Task05
 {
+    using System.Collections.Generic;
+    using Task04;
+
     public class HashedSet<T> : IEnumerable<T>
     {
         private MyHashTable<int, T> elements;

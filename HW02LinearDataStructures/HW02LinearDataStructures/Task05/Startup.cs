@@ -1,4 +1,4 @@
-﻿//Write a program that removes from given sequence all negative numbers.
+﻿// Write a program that removes from given sequence all negative numbers.
 
 namespace Task05
 {

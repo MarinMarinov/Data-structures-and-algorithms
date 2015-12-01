@@ -16,7 +16,7 @@ namespace Task07
         {
             List<int> numbers = new List<int>() { 2, 3, 3, 3, 5, 6, 1, 4, 4, 4, 1, 3, 3, 7, 8, 8, 9 };
 
-            var numbersInDictionary = numbers.GroupBy(x => x).ToDictionary(key => key.Key, value => value.Count());
+            Dictionary<int, int> numbersInDictionary = numbers.GroupBy(x => x).ToDictionary(key => key.Key, value => value.Count());
 
             foreach (var keyValue in numbersInDictionary)
             {

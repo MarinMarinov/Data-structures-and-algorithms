@@ -1,4 +1,4 @@
-﻿//Write a program that reads N integers from the console and reverses them using a stack.
+﻿// Write a program that reads N integers from the console and reverses them using a stack.
 // Use the Stack<int> class.
 
 namespace Task02
